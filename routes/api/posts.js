@@ -254,8 +254,8 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 
     // Get remove index
     const removeIndex = post.comments
-      .map(comment => comment.user.toString())
-      .indexOf(req.user.id);
+      .map(comment => comment.id)
+      .indexOf(req.params.comment_id);
     if (removeIndex === -1) {
       return res.status(400).json({ msg: 'Comment not found' });
     }
